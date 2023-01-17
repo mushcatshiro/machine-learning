@@ -421,6 +421,9 @@ consider the following t/f questions
 - An LP's optimal solution is always an extreme point. 
 
 ans: (incorrect) TFTFF, TFTFT, TFTTF
+clarification: there exists three scenario, no solution, one solution and
+infinite solutions i.e. a line. this item 4 is true and item 5 is false.
+for item 3 imagine a 1D scenario, a single binding constraint is sufficient.
 
 ### q3
 
