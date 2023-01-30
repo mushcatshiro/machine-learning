@@ -39,7 +39,6 @@ b ---> dr[*Dimensionality reduction]
 
 Many problems can be formulated as systems of linear equations and linear algebra provides us the tool for solving them.
 
-
 Example 2.1  
 A company produces product $N_1$,...,$N_n$ for which resources $R_1$,...,$R_m$ are required. To produce a unit of product $N_j$, $a_{i,j}$ units of resources $R_i$ where $i=1$,...$m$ and $j=1$,...,$n$. the objective is to find an optimal production plan, i.e. a plan of how many units $x_j$ of product $N_j$ should be produced if a total of $b_i$ units of resource $R_i$ are available and no resources are left over. if we produce $x_1$,...,$x_n$ units of the corresponding products, we need a total of $a_{i1}x_1+...+a_{in}x_n$ many units of resource. An optimal production plan $(x_1,...,x_n)\in{\mathbb{R}^n}$, therefore has to satisfy the following system of equations:
 
@@ -209,7 +208,7 @@ key to step 1 in solving SoLE with Gaussian elemination is elementary transforma
 REF is defined such that
 
 - all rows that contain only zero are at the bottom
-- all rows that contain at least on nonzero element are on top of those contain only zeros
+- all rows that contain at least one nonzero element are on top of those contain only zeros
 - looking a nonzero rows, first nonzero number from the left is always strictly to the right of the pivot of the row above it.
 
 pivots in REF are called _basic variables_ and the rest are called _free variables_.
@@ -308,7 +307,7 @@ where
 - $(V,+)$ is an abelian group
 - Distributivity
   - $\forall{\lambda}\in{\mathbb{R}},x,y,\in{V}:\lambda\cdot{(x+y)}=\lambda\cdot{x}+\lambda\cdot{y}$
-  - $forall{\lambda,\phi}\in{\mathbb{R}},x\in{V}:(\lambda+\phi)\cdot{x}=\lambda\cdot{(\phi\cdot{x})}=(\lambda\cdot{\phi})\cdot{x}$
+  - $\forall{\lambda,\phi}\in{\mathbb{R}},x\in{V}:(\lambda+\phi)\cdot{x}=\lambda\cdot{(\phi\cdot{x})}=(\lambda\cdot{\phi})\cdot{x}$
   - associativity (outer operation,$\cdot$) $\forall{\lambda,\phi}\in{\mathbb{R}},x\in{V}:\lambda\cdot{\phi\cdot{x}}=(\lambda\phi)\cdot{x}$
   - neutral element wrt to the outer operation $\forall{x}\in{V}:1\cdot{x}=x$
 
@@ -405,7 +404,7 @@ a bijective mapping $\Phi$ can be undone such that there exists a $\Psi:W\rarr{V
 - $id_v:V\rarr{V},x\mapsto{x}$ as the identity mapping
 - homomorphism example $\Phi:\mathbb{R}^{2}\rarr{\mathbb{C}},\Phi{(x)}=x_1+ix_2$
 
-Finite-dimensional vector spaces $V$ and $W$ are isomorphic iif $dim(V)=dim(W)$. from the statement stated earlier for $\mathbb{R}^{mn}$ there exists a linear, bijective mapping that allows the transform $\mathbb{R}^{nm}$
+**Finite-dimensional vector spaces** $V$ and $W$ are isomorphic iif $dim(V)=dim(W)$. from the statement stated earlier for $\mathbb{R}^{m\times{n}}$ there exists a linear, bijective mapping that allows the transform $\mathbb{R}^{nm}$
 
 - for linear mapping $\Phi:V\rarr{W}$ and $\Psi:W\rarr{X}$ the mapping $\Psi\circ\Phi:V\rarr{X}$ is also linear
 - if $\Phi:V\rarr{W}$ is isomorphism then $\Phi^{-1}:W\rarr{V}$ is also isomorphism
@@ -413,4 +412,22 @@ Finite-dimensional vector spaces $V$ and $W$ are isomorphic iif $dim(V)=dim(W)$.
 
 ### matrix representation of linear mappings
 
-consider a basis $B$ ${b_1, ... , b_n}$ of an $n$-dimensional vector space $V$, note the order of basis vector is important, it is called $n$-tuple ordered basis of $V$ and is written as $B$ $(b_1,...,b_n)$
+consider a basis $B$ ${b_1, ... , b_n}$ of an $n$-dimensional vector space $V$, note the order of basis vector is important, it is called $n$-tuple ordered basis of $V$ and is written as $B = (b_1,...,b_n)$
+
+> remarks, here {} is an unordered basis, [b1, b2] is a matrix whose columns are vectors b1, b2 and () is an ordered basis
+
+given a vector space $V$ and an ordered basis $B$ of $V$, for any $x\in{V}$ we obtain a unique representation (linear combination)
+
+$$
+x = \alpha_1b_1 + ... + \alpha_nb_n
+$$
+
+of $x$ w.r.t to $B$, thus $\alpha_1,...,\alpha_n$ are coordinates of $x$ w.r.t $B$
+
+Transformation matrix, given vector spaces $V,W$ with their corresponding ordered bases $B=(B_1,...,B_n)$ and $C=(C_1,...C_m)$. consider linear mapping $\Phi:V\rarr{W}$, for $j\in{(1,...,n)}$
+
+$$
+\Phi{(b_j)} = \alpha_{1j}c_1+...+\alpha_{mj}c_m = \sum_{i=1}^{m}{\alpha_{ij}c_i}
+$$
+
+is the unique representation of $\Phi{b_j}$ w.r.t. $C$, thus a matrix $A_{\Phi}$ whose element are $A_{\Phi}(i,j)=\alpha_{ij}$ is the transformation matrix of $\Phi$ w.r.t. ordered basis $B$ of $V$ and $C$ of $W$.

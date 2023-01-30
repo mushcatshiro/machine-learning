@@ -129,7 +129,7 @@ George Dantzig route planning for military aircraft by inventing the simplex
 method.
 
 ```python
-# knapsack problem
+# knapsack problem - in IP skipp!
 
 # simplex method - in mip/milp skipp!
 ```
