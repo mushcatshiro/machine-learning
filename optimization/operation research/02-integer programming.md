@@ -108,8 +108,11 @@ $$
 $$
 
 > question: why isnt leq?
-
+leq means that empty set is also a solution.
 > question: why condition are not "two-way"?
+
+> depending on the condition (business need clarification), $\leq$, $geq$
+> and $=$ is used.
 
 #### if-else
 
