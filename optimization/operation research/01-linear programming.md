@@ -387,7 +387,7 @@ opt = linprog(
 )
 ```
 
-## assignments
+## quiz
 
 ### q1
 

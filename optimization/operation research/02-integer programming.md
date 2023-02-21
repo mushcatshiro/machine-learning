@@ -454,7 +454,7 @@ imposed.
 
 > by adding approach 1 or 2 it completes the formulation
 
-## assignments
+## quiz
 
 ### q1
 
