@@ -74,10 +74,11 @@ for a variable $x_i$
 - a feasible solutions satisfies all the constraints
 - an infeasible solution violates at least one constraints
 
-by combining all sets of feasible solution we have a feasible region or feasible
-set, which might be empty. an optiminal solution is a feasible solution that
-attains the largest objective value for a maxization problem or vice versa.
-however it might not be unique and there might not be an optimal solution.
+by combining all sets of feasible solution we have a feasible region or 
+feasible set, which might be empty. an optiminal solution is a feasible
+solution that attains the largest objective value for a maxization problem or
+vice versa. however it might not be unique and there might not be an optimal
+solution.
 
 ### binding constraints
 

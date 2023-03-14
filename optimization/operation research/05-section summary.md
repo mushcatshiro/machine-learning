@@ -40,6 +40,67 @@ table 1
 
 table 2
 
+#### solution 1
+
+$$
+\begin{align*}
+\max{\sum_{j}^{3}\sum_{i}^{7}{R_{ij}M_{ij}p_i}}\\
+s.t. \quad \sum_{i}^{7}{M_{i1}}\leq{100}\\
+\sum_{i}^{7}{M_{i2}}\leq{150}\\
+\sum_{i}^{7}{M_{i3}}\leq{200}\\
+x_i\geq{0} \quad \forall{i}\in{1,...7}
+\end{align*}
+$$
+
+where
+- $R_{ij}$ refers to the required $j$th material for producing product $i$
+- $M_{ij}$ refers to the allocated $j$th material for product $i$
+- $p_i$ refers to the profit of $i$th product
+
+> comment: this is not inline to the format for any solver, to confirm if 
+> "conceptually" it is correct?
+
+#### solution 2
+
+$$
+\begin{align*}
+\max \sum_{i}^{7}{x_ip_i}\\
+s.t. \quad 0x_{1}+5x_{2}+5x_{3}+4x_{4}+8x_{5}+5x_{6}+3x_{7}\leq{100}\\
+3x_{1}+10x_{2}+3x_{3}+6x_{4}+2x_{5}+2x_{6}+2x_{7}\leq{150}\\
+10x_{1}+10x_{2}+9x_{3}+3x_{4}+8x_{5}+10x_{6}+7x_{7}\leq{200}\\
+x_i\geq{0} \quad \forall{i}\in{1,...7}
+\end{align*}
+$$
+
+```python
+from scipy.optimize import linprog
+
+# solving the product mix problem
+
+obj = [-100, -120, -135, -90, -125, -110, -105]
+lhs_ineq = [[0, 5, 5, 4, 8, 5, 3],
+            [3, 10, 3, 6, 2, 2, 2],
+            [10, 10, 9, 3, 8, 10, 7]]
+rhs_ineq = [[100],
+            [150],
+            [200]]
+bounds = [(0, float("-inf")),
+          (0, float("-inf")),
+          (0, float("-inf")),
+          (0, float("-inf")),
+          (0, float("-inf")),
+          (0, float("-inf")),
+          (0, float("inf"))]
+
+
+opt = linprog(
+    c=obj, A_ub=lhs_ineq, b_ub=rhs_ineq,
+    bounds=bounds
+)
+```
+
+> neither s1 or s2 shows the need for IP?
+
 ### q2
 
 Consider a set of data $(x_i,y_i),i=1,...,n$ provided in table 3. if we believe
@@ -76,6 +137,16 @@ $$
 | 59 | 154 |
 | 40 | 175 |
 | 65 | 247 |
+
+$$
+\begin{align*}
+\min_{\alpha,\beta}\sum_{i=1}^{n}[y_i-(\alpha+\beta{x_i})]^2\\
+
+\min_{}
+\end{align*}
+$$
+
+> how to remove constant (if any) in objective function?
 
 ## reference
 
