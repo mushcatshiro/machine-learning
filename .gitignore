@@ -3,3 +3,4 @@ __pycache__/
 ml/
 *.pdf
 venv/
+.DS_Store
