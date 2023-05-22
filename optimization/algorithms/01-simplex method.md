@@ -183,6 +183,11 @@ variables, decide which one to leave. find new basis. ensure system meets 1.
 identity matrix in constraints (row 1 to row m) and 2. zeros in objective
 function. for any ties, choose the smallest index suitable variable.
 
+> for the ratio test if the denominator is 0 or negative, just ignore them as
+> the prior has no impact to basic variable and the latter increases the basic
+> variable as it (non basic variable) increases, either way it can not reach
+> zero
+
 a great visualization method is the tableau format. in the format
 
 | -1 | 0 | 0 | 0 | 0 | 0 |
@@ -209,7 +214,12 @@ LP is unbounded if:
 - but in that direction there is always a better solution
 
 this can be checked easily from a simplex tableau. if the ratio test fails
-completely i.e. all ratio test values is -ve.
+completely i.e. all ratio test values is -ve,
+
+- for a max function's 0th row $\bar{c}_j\lt{0}$
+- for a min function's 0th row $\bar{c}_j\gt{0}$ 
+
+and  resulting no variable able to leave.
 
 ## infeasible LP
 
