@@ -10,7 +10,7 @@ MIN_PROBELM = "min"
 MAX_PROBLEM = "max"
 
 
-@dataclass
+# @dataclass
 class LinearProgramResult:
     is_feasible: bool = True
     is_bounded: bool = True
@@ -21,12 +21,22 @@ class LinearProgramResult:
 
 class SimplexSolver:
     def __init__(
-        self, c, a_ub, b_ub, a_eq, b_eq, a_lb=None, b_lb=None, mode=None
+        self,
+        c,
+        a_ub=None,
+        b_ub=None,
+        a_eq=None,
+        b_eq=None,
+        a_lb=None,
+        b_lb=None,
+        bounds=(0, None),
+        mode=None,
     ):
         """
         assumes:
         - a min problem is provided thus `a_lb`, `b_lb` and `mode` are None.
         - inputs `a_*`, `b_*`, `c` are vertically aligned (?)
+        - inputs are np.ndarray(s)
         """
         self.c = c
         self.a_ub = a_ub
@@ -35,6 +45,10 @@ class SimplexSolver:
         self.b_eq = b_eq
         self.a_lb = a_lb
         self.b_lb = b_lb
+        self.lbounds = bounds[0]
+        self.ubound = bounds[1]
+        self.slack_idx = None
+        self.artificial_idx = None
         self.iterations = 0
         if mode is None:
             self.mode = "min"
@@ -58,12 +72,47 @@ class SimplexSolver:
     def row_operation(self):
         pass
 
+    def shape_check(self):
+        # dealing with None?
+        assert self.a_eq.shape[0] == self.a_lb.shape[0] == self.a_ub.shape[0]
+        self.slack_idx = self.a_lb.shape[0]
+
     def standardize_matrix(self):
         # TODO turn into min problem?
+        # with such it simplifies the code a bit
+
+        # all RHS value are non negative
+        c = self.b_ub.T.shape
+        neg_idx_b_ub = np.where(self.b_ub < np.zeros((c, 1)))
+        # neg_idx_b_lb = np.where(self.b_lb < 0)
+        print(f"neg idx b ub: {neg_idx_b_ub}")
+        # print(f"neg_idx_b_lb: {neg_idx_b_lb}")
+        for idx in neg_idx_b_ub:
+            self.a_ub[idx, :] *= -1
+        # for idx in neg_idx_b_lb:
+        #     self.a_lb[idx, :] *= -1
+        print(f"a_ub: {self.a_ub}")
+        print(f"a_lb: {self.a_lb}")
+        # all variables are nonnegatives
+        if self.lbounds < 0:
+            raise ValueError("variables lower must be geq 0")
+        # all constraints are equalities
         if self.mode == MIN_PROBELM:
-            pass
+            # first deal with upper bound
+            r, c = self.b_ub.shape
+            ub_slack = np.ones((r, c))
+            self.a_ub = np.concatenate((self.a_ub, ub_slack), axis=1)
+            # addition of new slacks does not affect self.[l|u]bounds
+            # TODO
+            # edge case: dealing with 0s in constraints?
+            # i.e. 2x_1 + 3x_2 \geq 0
+
+            # next deal with lower bound
+            r, c = self.b_lb.shape
+            lb_slack = np.ones((r, c)) * -1
+            self.a_ub = np.concatenate((self.a_ub, lb_slack), axis=1)
         elif self.mode == MAX_PROBLEM:
-            pass
+            raise ValueError("not supporting max problem")
 
     def make_matrix_valid(self):
         pass
@@ -96,7 +145,11 @@ class SimplexSolver:
         pass
 
     def solve(self):
+        # self.shape_check()
         self.standardize_matrix()
+        print(f"c   : {self.c}")
+        print(f"a_ub: {self.a_ub}")
+        return
         while self.iterations <= MAX_ITERATIONS:
             """
             choose row and col?
