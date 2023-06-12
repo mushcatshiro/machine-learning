@@ -404,7 +404,12 @@ a bijective mapping $\Phi$ can be undone such that there exists a $\Psi:W\rarr{V
 - $id_v:V\rarr{V},x\mapsto{x}$ as the identity mapping
 - homomorphism example $\Phi:\mathbb{R}^{2}\rarr{\mathbb{C}},\Phi{(x)}=x_1+ix_2$
 
+<<<<<<< HEAD
 **Finite-dimensional vector spaces** $V$ and $W$ are isomorphic iif $dim(V)=dim(W)$. from the statement stated earlier for $\mathbb{R}^{m\times{n}}$ there exists a linear, bijective mapping that allows the transform $\mathbb{R}^{nm}$
+=======
+Definition 2.17
+Finite-dimensional vector spaces $V$ and $W$ are isomorphic iif $dim(V)=dim(W)$. from the statement stated earlier for $\mathbb{R}^{mn}$ there exists a linear, bijective mapping that allows the transform $\mathbb{R}^{nm}$
+>>>>>>> 7d41563 (adding mml contents)
 
 - for linear mapping $\Phi:V\rarr{W}$ and $\Psi:W\rarr{X}$ the mapping $\Psi\circ\Phi:V\rarr{X}$ is also linear
 - if $\Phi:V\rarr{W}$ is isomorphism then $\Phi^{-1}:W\rarr{V}$ is also isomorphism
@@ -412,22 +417,30 @@ a bijective mapping $\Phi$ can be undone such that there exists a $\Psi:W\rarr{V
 
 ### matrix representation of linear mappings
 
-consider a basis $B$ ${b_1, ... , b_n}$ of an $n$-dimensional vector space $V$, note the order of basis vector is important, it is called $n$-tuple ordered basis of $V$ and is written as $B = (b_1,...,b_n)$
+consider a basis $B$ ${b_1, ... , b_n}$ of an $n$-dimensional vector space $V$, note the order of basis vector is important, it is called $n$-tuple ordered basis of $V$ and is written as $B$ $(b_1,...,b_n)$.
 
-> remarks, here {} is an unordered basis, [b1, b2] is a matrix whose columns are vectors b1, b2 and () is an ordered basis
+> note $(b_1, ..., b_n)$ is for ordered set, $\{b_1, ... , b_n\}$ is for unordered set and $\begin{bmatrix}b_1, ... , b_n\end{bmatrix}$ is a matrix whose columns are vectors
 
-given a vector space $V$ and an ordered basis $B$ of $V$, for any $x\in{V}$ we obtain a unique representation (linear combination)
+Definition 2.18
 
-$$
-x = \alpha_1b_1 + ... + \alpha_nb_n
-$$
-
-of $x$ w.r.t to $B$, thus $\alpha_1,...,\alpha_n$ are coordinates of $x$ w.r.t $B$
-
-Transformation matrix, given vector spaces $V,W$ with their corresponding ordered bases $B=(B_1,...,B_n)$ and $C=(C_1,...C_m)$. consider linear mapping $\Phi:V\rarr{W}$, for $j\in{(1,...,n)}$
+given a vector space $V$ and an ordered basis $B=(b_1,...,b_n)$ of $V$ thus for any $x\in{V}$ we obtain a unique representation/linear combination
 
 $$
-\Phi{(b_j)} = \alpha_{1j}c_1+...+\alpha_{mj}c_m = \sum_{i=1}^{m}{\alpha_{ij}c_i}
+x=\alpha_1b_1 + ... + \alpha_n{b_n}
 $$
 
-is the unique representation of $\Phi{b_j}$ w.r.t. $C$, thus a matrix $A_{\Phi}$ whose element are $A_{\Phi}(i,j)=\alpha_{ij}$ is the transformation matrix of $\Phi$ w.r.t. ordered basis $B$ of $V$ and $C$ of $W$.
+which $\alpha$ are the coordinates of $x$ with respect to $B$ and the vector $\bold{\alpha}=\begin{bmatrix}\alpha_1,...,\alpha_n\end{bmatrix}^T\in{\mathbb{R^n}}$ is the coordinate vector/representation of $x$ with respect to the ordered basis $B$. basis effectively defines the coordinate system.
+
+Definition 2.19
+
+(transformation matrix) consider vector space $V, W$ with corresponding ordered bases $B=(b_1,...b_n),C=(c_1,..,c_m)$ and linear mapping $\phi:V\rarr{W}$ for $j\in{1,...,n}$,
+
+$$
+\phi{(b_j)}=\alpha_{1j}{c_1}+...+\alpha_{mj}{c_m}=\sum_{i=1}^{m}{\alpha_{ij}{c_i}}
+$$
+
+is the unique representation of $\phi{(b_j)}$ w.r.t. $C$. a $m\times{n}$ matrix whose elements are $A_{\phi}(i,j)=\alpha_{ij}$ then then called the transformation matrix of $\phi$
+
+### basis change
+
+given a linear mapping $\phi:V\rarr{W}$ and consider $V, W$ each have two set of bases e.g. $B=(b_1,...,b_n),\tilde{B}=(\tilde{b_1},...,\tilde{b_n})$ and $C,\tilde{C}$ for $W$. for transformation matrix $A_\phi$ is w.r.t $B,C$ and $\tilde{A}_\phi$ is w.r.t. $\tilde{B},\tilde{C}$, the relation between two tranformation matrix is studied.
