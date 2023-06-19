@@ -60,7 +60,7 @@ $$
 ## gradient descent
 
 given a objective function $f(x)=x_0^2+x_1^2$ its gradient is a $n$ dimensional
-vector see gradient example from the previous section and $n=2$`. gradient is
+vector see gradient example from the previous section and $n=2$. gradient is
 an increasing **direction**. for a twice-differentiable function $f(x)$ its
 gradient is an increasing function i.e. $f(x+a\triangledown{f(x)})>f(x)$ for 
 all $a>0$ that are small enough i.e. if $a>>0$ it might not be true.
@@ -110,6 +110,12 @@ the algorithm
 
 > the last step is finding a norm (assuming is L2) i.e.
 > $||x||=\sqrt{(x_1^2+\dots+x_n^2)}$ when $x\in{\mathbb{R}^n}$
+
+> step solving $a_k=\argmin_{a\geq{0}}{f(x^k-a\triangledown{f(x^k)})}$ can be
+> replaced by other approximations method because the solving $\argmin{f(x)}$
+> of the original equation might be too difficult. currently deep learning
+> frameworks uses learning rate to control (to validate). alternatively can
+> checkout line search.
 
 looking at the search route $x^0, \dots, x^n$ and obtaining $x^*$ the algorithm
 search only one direction in each iteration. its always zigzag-ing because it
@@ -200,3 +206,8 @@ generally using GD or NM one must consider the following issues
 - constrained optimization
 
 > note that GD and NM are interior point methods.
+> both gradient descent and netwon's method searches for a local optimum,
+> however if newton's method converge it is also the global optimum.
+
+> know that for iterative methods like GD and NM, the step size (how far to move
+> away from the existing location) and direction are the core components.
