@@ -127,3 +127,7 @@ it is interesting but difficult.
 
 > designing heuristic algorithm is simple however evaluation and analysis is
 > hard.
+
+> advanced method: cutting-plane method, branch and cut, branch and price etc.
+> due to the computational complexity, integer variables are only used for
+> selection between multiple options.

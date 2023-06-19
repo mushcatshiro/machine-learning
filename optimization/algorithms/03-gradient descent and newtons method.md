@@ -126,7 +126,7 @@ for any $x^k$ let $f_L(x)=f(x^k)+f'(x^k)(x-x^k)$ to be the linear approximation
 of $f$ at $x^k$. this is the tangent line of $f$ at $x^k$ or the first order
 taylor expansion of $f$ at $x^k$. moving from $x^k$ to $x^{k+1}$ by setting
 $f_L(x^{k+1})=f(x^k)+f'(x^k)(x^{k+1}-x^k)=0$. keep iterating until
-$|x^{k+1}-x^k|\lt{\epsilon}$ or $f(x^k)|\lt{\epsilon}$ for some predetermined
+$|x^{k+1}-x^k|\lt{\epsilon}$ or $|f(x^k)|\lt{\epsilon}$ for some predetermined
 $\epsilon\gt{0}$
 
 now let $f$ be twice differentiable and find $\bar{x}$ such that $f'(\bar{x})$=0$
@@ -139,5 +139,64 @@ predetermined $\epsilon\gt{0}$
 > note $f'(\bar{x})$ does not guarantee a global minimum, need to also proof
 > that $f$ is convex
 
-### another interpretation
+### another interpretation (newton's method for solving single variate NLP)
 
+previous interpretation is from a linear perspective i.e. $f$'s linear
+approximation with $f_L(x) and $f'_L(x)$. now from a quadratic approximation
+point of view,
+
+$$
+f_Q(x)=f(x^k)+f'(x^k)(x-x^k)+\frac{1}{2}f''(x^k)(x-x^k)^2
+$$
+
+this can be viewed as the second order of taylar expansion of $f$ at $x^k$.
+moving from $x^k$ to $x^(k+1)$ by moving to the global minimum of the quadratic
+approximation,
+
+$$
+x^{(k+1)}=\argmin_{x\in{\mathbb{R}}}{f(x^k)+f'(x^k)(x-x^k)+\frac{1}{2}f''(x^k)(x-x^k)^2}
+$$
+
+by differentiating the above objective function w.r.t. to x yields,
+
+$$
+f'(x^k)+f''(x^k)(x^{(k+1)}-x^k)=0 \lrArr x^{(k+1)}=x^k-\frac{f'(x^k)}{f''(x^k)}
+$$
+
+the above might not be easy to interpret. what happens is let $x^k$ be some
+value then rewrite the objective function. from that second order function,
+find $x^(k+1)$ with its first order derivative when it is $0$. alternatively,
+
+$$
+\begin{align*}
+\frac{d}{d\Delta{x}}(f(x)+f'(x)\Delta{x}+\frac{1}{2}f''(x)\Delta{x}^2)=0\\
+f'(x)+f''(x)\Delta{x}=0\\
+\end{align*}
+$$
+
+### newton's method for multivariate NLP
+
+let $f:\mathbb{R}^n\rightarrow{\mathbb{R}}$ be twice differentiable. for any
+$x^k$ let the quadratic approximation of $f$ at $x^k$ where $f'$ is now $\triangledown{x^k}$
+(Hessian). moving from $x^k$ to $x^(k+1)$ towards the global minimum of the
+quadratic approximation $\triangledown{f(x^k)}+\triangledown^2{f(x^k)}(x^{(k+1)}-x^k)$
+i.e. $x^{(k+1)}=x^k-[\triangledown^2{f(x^k)}]^{-1}\triangledown{f(x^k)}$
+
+> Hessian is a matrix thus $-1$ implies inverse
+
+### summary for newton's method
+
+- does not have step size issue
+- potentially faster
+  - able to find the optimal solution in one iteration for quadratic function
+- potentially failed to converge
+
+generally using GD or NM one must consider the following issues
+
+- convergence guarantee
+- convergence speed
+- differentiability
+  - sub-gradient
+- constrained optimization
+
+> note that GD and NM are interior point methods.

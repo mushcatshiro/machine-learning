@@ -96,7 +96,8 @@ two bases are adjacent if exactly one of their **variables** is different, two
 bfs are adjacent if their associated bases are adjacent.
 
 > movement through edges, if there is a better bfs it hints improving direction
-> , if there isnt bfs is optimal
+> , if there isnt bfs is optimal. there exists interior-point methods e.g.
+> Karmarkar's method that moves through the interior of feasible region.
 
 ## the idea
 
