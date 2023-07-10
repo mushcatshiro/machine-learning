@@ -39,9 +39,10 @@ $f:\mathbb{R}^{n}\rarr\mathbb{R}$ and $g_i:\mathbb{R}^{n}\rarr\mathbb{R}$
 
 - $\max{f(x)}\hArr\min{-f(x)}$
 - $g_i(x)\geq{b_i}\hArr{-g_i(x)}\leq{-b_i}$
-- $g_i(x)=b_i\hArr{g_i(x)\leq{b_i}\quad\And\quad g_i(x)\geq{b_i}\text{, i.e. }-g_i(x)\leq{-b_i}}$
+- $g_i(x)=b_i\hArr{(g_i(x)\leq{b_i},g_i(x)\geq{b_i})}\hArr{(g_i(x)\leq{b_i},-g_i(x)\leq{-b_i})}$
 
 SNOTE:
+
 $$
 \begin{align*}
 \max(x_1-x_2)\\
@@ -53,10 +54,12 @@ $$
 is equivalent to
 
 $$
+\begin{align*}
 \min(-x_1+x_2)\\
 s.t.\quad (2x_1-x_2)\leq{3}\\
 x_1+4x_2\leq{5}\\
 -x_1-4x_2\leq{-5}
+\end{align*}
 $$
 
 thus we just need to learn to solve minimize problem.
