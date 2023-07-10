@@ -43,9 +43,11 @@ $f:\mathbb{R}^{n}\rarr\mathbb{R}$ and $g_i:\mathbb{R}^{n}\rarr\mathbb{R}$
 
 SNOTE:
 $$
+\begin{align*}
 \max(x_1-x_2)\\
 s.t.\quad (-2x_1+x_2)\geq{-3}\\
 x_1+4x_2=5
+\end{align*}
 $$
 
 is equivalent to
