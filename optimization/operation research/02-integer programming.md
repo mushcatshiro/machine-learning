@@ -41,6 +41,8 @@ $$
 
 IP allow implementation of selection rules.
 
+### choosing variables
+
 #### At least or at most
 
 variables: at least one among item 2, 3, 4
@@ -54,6 +56,44 @@ variables: at most two among item 1, 3, 4
 $$
 x_1+x_3+x_4\leq{2}
 $$
+
+#### Or
+
+select item 2 or 3
+
+$$
+x_2+x_3\geq{1}
+$$
+
+select item 2; otherwise item 3 and 4 together
+
+$$
+2x_2+x_3+x_4\geq{2}
+$$
+
+> question: why isnt leq?
+leq means that empty set is also a solution.
+> question: why condition are not "two-way"?
+
+> depending on the condition (business need clarification), $\leq$, $\geq$
+> and $=$ is used.
+
+#### if-else
+
+if item 2 is selected; select item 3
+
+$$
+x_2\leq{x_3}
+$$
+
+if item 1 is selected, do not select item 3 and 4; if item 1 is not selected
+item 3 and 4 are optional (no requirement)
+
+$$
+2(1-x_1)\geq{x_3+x_4}
+$$
+
+### choosing constraints
 
 constraints: satisfying one of two constraints $g_1(x)\leq{b_1}\text{ and }g_2(x)\leq{b2}$
 by defining,
@@ -93,40 +133,7 @@ g_i(x)-b_i\leq{M_i(1-z)} \quad \forall{i}=1,2,3\\
 z_1+z_2+z_3\geq{2}
 $$
 
-#### Or
-
-select item 2 or 3
-
-$$
-x_2+x_3\geq{1}
-$$
-
-select item 2; otherwise item 3 and 4 together
-
-$$
-2x_2+x_3+x_4\geq{2}
-$$
-
-> question: why isnt leq?
-leq means that empty set is also a solution.
-> question: why condition are not "two-way"?
-
-> depending on the condition (business need clarification), $\leq$, $\geq$
-> and $=$ is used.
-
-#### if-else
-
-if item 2 is selected; select item 3
-
-$$
-x_2\leq{x_3}
-$$
-
-if item 1 is selected; do not select item 3 and 4
-
-$$
-2(1-x_1)\geq{x_3+x_4}
-$$
+> 3 out of 4?
 
 ### Fixed-charge constraints
 
@@ -346,7 +353,7 @@ complete formulation
 
 $$
 \begin{align*}
-\min \sum_{j\in{J}{x_j}}\\
+\min \sum_{j\in{J}}{x_j}\\
 s.t. \quad x_i+p_j-x_j\leq{M}z_{ij} \quad \forall{i\in{J}},j\in{J},i\lt{j}\\
 x_i+p_j-x_j\leq{M}(1-z_{ij}) \quad \forall{i\in{J}},j\in{J},i\lt{j}\\
 x_j\geq{p_j} \quad \forall{j\in{J}}\\
@@ -372,14 +379,14 @@ time i.e. of all machine the one that takes the longest to finish processing.
 - as long as some set of jobs are assigned to a machine, the sequence does not matter
 - the problem of minimizing makespan is just assigning jobs to machines
 - let $x_{ij}=1$ if job $j\in{J}$ is assigned to machine $i\in{I}$ or $0$ otherwise.
-- on machine $i\in{I}$ the last job is completed at $\sum_{j\in{J}{p_jx_{ij}}}$
+- on machine $i\in{I}$ the last job is completed at $\sum_{j\in{J}}{p_jx_{ij}}$
 - the makespan $w$ is the maximum completion time among all machine $w\geq{\sum_{j\in{J}}{p_jx_{ij}}},\forall{i\in{I}}$
 
 $$
 \begin{align*}
 \min w\\
-s.t. \quad w\geq{\sum_{j\in{J}}{p_jx_{ij}}},\forall{i\in{I}}\\
-\sum_{i\in{I}x_{ij}}=1 \quad \forall{j\in{J}}\\
+s.t. \quad w\geq{\sum_{j\in{J}}}{p_jx_{ij}},\forall{i\in{I}}\\
+\sum_{i\in{I}}x_{ij}=1 \quad \forall{j\in{J}}\\
 x_{ij}\in{\{0,1\}} \quad \forall{i\in{I},j\in{J}}
 \end{align*}
 $$

@@ -194,7 +194,7 @@ a great visualization method is the tableau format. in the format
 | -1 | 0 | 0 | 0 | 0 | 0 |
 |----|---|---|---|---|---|
 | 2 | -1 | 1 | 0 | 0 | $x_3=4$ |
-| 2 | 1 | 0 | 1 | 0 | $x_4=8 |
+| 2 | 1 | 0 | 1 | 0 | $x_4=8$ |
 | 0 | 1 | 0 | 0 | 1 | $x_5=3$ |
 
 do a ratio test we got row 1 col 1. $x_3$ to leave, $x_1$ of row 1 to reduce to

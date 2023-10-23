@@ -12,9 +12,11 @@ applications
 basic elements of a program
 
 $$
-\min{f(x_1, x_2,...,x_n)}\\
-s.t.\quad g_i(x_1, x_2,...,x_n)\leq{b_i}\quad\forall{i}=1,...,m\\
+\begin{align}
+\min{f(x_1, x_2,...,x_n)}\cr
+s.t.\quad g_i(x_1, x_2,...,x_n)\leq{b_i}\quad\forall{i}=1,...,m\cr
 x_j\in{\mathbb{R}}\quad\forall{j}=1,...,n
+\end{align}
 $$
 
 - objective function (to minimize or maximize)
@@ -25,7 +27,7 @@ we may write the decision variables into
 
 $$
 X = \begin{bmatrix}
-    x_1\\x_2\\...\\x_n
+    x_1 \cr x_2 \cr ... \cr x_n
 \end{bmatrix} = (x_1,x_2,...,x_n)
 $$
 
@@ -33,28 +35,32 @@ as a vector.
 
 > note the parenthesis (square vs round)
 
-$f:\mathbb{R}^{n}\rarr\mathbb{R}$ and $g_i:\mathbb{R}^{n}\rarr\mathbb{R}$
+$f:\mathbb{R}^{n}\Rightarrow{\mathbb{R}}$ and $g_i:\mathbb{R}^{n}\Rightarrow\mathbb{R}$
 
 ### tranformation
 
-- $\max{f(x)}\hArr\min{-f(x)}$
-- $g_i(x)\geq{b_i}\hArr{-g_i(x)}\leq{-b_i}$
-- $g_i(x)=b_i\hArr{g_i(x)\leq{b_i}\quad\And\quad g_i(x)\geq{b_i}\text{, i.e. }-g_i(x)\leq{-b_i}}$
+- $\max{f(x)}\Leftrightarrow{\min{-f(x)}}$
+- $g_i(x)\geq{b_i}\Leftrightarrow{-g_i(x)}\leq{-b_i}$
+- $g_i(x)=b_i\Leftrightarrow{g_i(x)\leq{b_i}\quad\And\quad g_i(x)\geq{b_i}\text{, i.e. }-g_i(x)\leq{-b_i}}$
 
 SNOTE:
 $$
-\max(x_1-x_2)\\
-s.t.\quad (-2x_1+x_2)\geq{-3}\\
+\begin{align}
+\max(x_1-x_2)\cr
+s.t.\quad (-2x_1+x_2)\geq{-3}\cr
 x_1+4x_2=5
+\end{align}
 $$
 
 is equivalent to
 
 $$
-\min(-x_1+x_2)\\
-s.t.\quad (2x_1-x_2)\leq{3}\\
-x_1+4x_2\leq{5}\\
+\begin{align}
+\min(-x_1+x_2)\cr
+s.t.\quad (2x_1-x_2)\leq{3}\cr
+x_1+4x_2\leq{5}\cr
 -x_1-4x_2\leq{-5}
+\end{align}
 $$
 
 thus we just need to learn to solve minimize problem.
@@ -149,14 +155,14 @@ labours each work 8 hours, 50 machines that runs for 16 hours and a supply of
 solution
 
 $$
-\begin{align*}
-\max{(700x_d+900x_t)}\\
-s.t.\quad 3x_d+5x_t\leq{3600}\\
-x_d+2x_t\leq{200*8}\\
-50x_d+20x_t\leq{50*16*60}\\
-x_d\geq{0}\\
+\begin{align}
+\max{(700x_d+900x_t)}\cr
+s.t.\quad 3x_d+5x_t\leq{3600}\cr
+x_d+2x_t\leq{200 \cdot 8}\cr
+50x_d+20x_t\leq{50 \cdot 16 \cdot 60}\cr
+x_d\geq{0}\cr
 x_t\geq{0}   
-\end{align*}
+\end{align}
 $$
 
 ans: $(884.21, 189.47)$
@@ -189,21 +195,21 @@ costs are calculated according to ending inventory. there are inventory balance
 constraints (first four) and demand fulfullment constraints (next four).
 
 $$
-x_t: \text{day t production quantity}\\
-y_t: \text{day t ending inventory}\\
-\begin{align*}
-\min{(9x_1+12x_2+10x_3+12x_4+y_1+y_2+y_3+y_4)}\\
-s.t.\quad x_1\geq{100}\\
-x_2+y_1\geq{150}\\
-x_3+y_2\geq{200}\\
-x_4+y_3\geq{170}\\
-x_1-100=y_1\\
-y_1+x_2-150=y_2\\
-y_2+x_3-200=y_3\\
-y_3+x_4-170=y_4\\
-x_t\geq{0}\\  
+\begin{align}
+x_t: \text{day t production quantity}\cr
+y_t: \text{day t ending inventory}\cr
+\min{(9x_1+12x_2+10x_3+12x_4+y_1+y_2+y_3+y_4)}\cr
+s.t.\quad x_1\geq{100}\cr
+x_2+y_1\geq{150}\cr
+x_3+y_2\geq{200}\cr
+x_4+y_3\geq{170}\cr
+x_1-100=y_1\cr
+y_1+x_2-150=y_2\cr
+y_2+x_3-200=y_3\cr
+y_3+x_4-170=y_4\cr
+x_t\geq{0}\cr  
 y_t\geq{0}
-\end{align*}
+\end{align}
 $$
 
 the formulation above might be slightly daunting. it is possible to simplify it
@@ -211,15 +217,15 @@ the formulation above might be slightly daunting. it is possible to simplify it
 $x_1-100=y_1$ and $y_1\geq{0}$ means $x_1\geq{100}$. thus,
 
 $$
-\begin{align*}
-\min{(9x_1+12x_2+10x_3+12x_4+y_1+y_2+y_3+y_4)}\\
-s.t.\quad x_1-100=y_1\\
-y_1+x_2-150=y_2\\
-y_2+x_3-200=y_3\\
-y_3+x_4-170=y_4\\
-x_t\geq{0}\\  
+\begin{align}
+\min{(9x_1+12x_2+10x_3+12x_4+y_1+y_2+y_3+y_4)}\cr
+s.t.\quad x_1-100=y_1\cr
+y_1+x_2-150=y_2\cr
+y_2+x_3-200=y_3\cr
+y_3+x_4-170=y_4\cr
+x_t\geq{0}\cr  
 y_t\geq{0}
-\end{align*}
+\end{align}
 $$
 
 identifying redundant constraints and removing them (will not alter the
@@ -242,17 +248,17 @@ of leave. number of employee required for each day,
 there are seven shifts and objective is to minimize number of employees.
 
 $$
-\begin{align*}
-\min{(x_m+x_t+x_w+x_{th}+x_f+x_{sa}+x_{su})}\\
-s.t.\quad x_m+x_{th}+x_f+x_{sa}+x_{su}\geq{110}\\
-x_m+x_t+x_f+x_{sa}+x_{su}\geq{80}\\
-x_m+x_t+x_w+x_{sa}+x_{su}\geq{150}\\
-x_m+x_t+x_w+x_{th}+x_{su}\geq{30}\\
-x_m+x_t+x_w+x_{th}+x_f\geq{70}\\
-x_{sa}+x_t+x_w+x_{th}+x_f\geq{160}\\
-x_{sa}+x_{su}+x_w+x_{th}+x_f\geq{120}\\
-x_i\geq{0}\\  
-\end{align*}
+\begin{align}
+\min{(x_m+x_t+x_w+x_{th}+x_f+x_{sa}+x_{su})}\cr
+s.t.\quad x_m+x_{th}+x_f+x_{sa}+x_{su}\geq{110}\cr
+x_m+x_t+x_f+x_{sa}+x_{su}\geq{80}\cr
+x_m+x_t+x_w+x_{sa}+x_{su}\geq{150}\cr
+x_m+x_t+x_w+x_{th}+x_{su}\geq{30}\cr
+x_m+x_t+x_w+x_{th}+x_f\geq{70}\cr
+x_{sa}+x_t+x_w+x_{th}+x_f\geq{160}\cr
+x_{sa}+x_{su}+x_w+x_{th}+x_f\geq{120}\cr
+x_i\geq{0}
+\end{align}
 $$
 
 > note x_i >= 0 meaning it can be fraction, which is totally fine. solving linear
@@ -282,18 +288,22 @@ becomes ending inventories. same goal to minimize total cost.
 
 
 $$
-\min{(9x_1+12x_2+10x_3+12x_4+y_1+y_2+y_3+y_4)}\\
-\text{into}\\
-\min \sum_{t=1}^{4}{C_tx_t+y_t}\\
+\begin{align}
+\min{(9x_1+12x_2+10x_3+12x_4+y_1+y_2+y_3+y_4)}\cr
+\text{into}\cr
+\min \sum_{t=1}^{4}{C_tx_t+y_t}\cr
+\end{align}
 $$
 
 where $C_t$ is cost of day $t=1, 2, 3, 4$
 
 $$
-x_1-100=y_1,\quad y_1+x_2-150=y_2, \quad y_2+x_3-200=y_3, \quad y_3+x_4-170=y_4\\
-\text{into}\\
-y_{t-1}+x_t-D_t=y_t \forall{t}=0, ..., 4\\
+\begin{align}
+x_1-100=y_1,\quad y_1+x_2-150=y_2, \quad y_2+x_3-200=y_3, \quad y_3+x_4-170=y_4\cr
+\text{into}\cr
+y_{t-1}+x_t-D_t=y_t \forall{t}=0, ..., 4\cr
 y_0 = 0
+\end{align}
 $$
 
 which $y_t =\text{ending inventory of day t, t = 0, 1, ... 4}$
@@ -313,41 +323,44 @@ through indices. they should be at the begining of the formulation.
 ### product mix
 
 $$
-\begin{align*}
-\max{(700x_d+900x_t)}\\
-s.t.\quad 3x_d+5x_t\leq{3600}\\
-x_d+2x_t\leq{200*8}\\
-50x_d+20x_t\leq{50*16*60}\\
-x_d\geq{0}\\
-x_t\geq{0}   
-\end{align*}
+\begin{align}
+\max{(700x_d+900x_t)}\cr
+s.t.\quad 3x_d+5x_t\leq{3600}\cr
+x_d+2x_t\leq{200 \cdot 8}\cr
+50x_d+20x_t\leq{50 \cdot 16 \cdot 60}\cr
+x_d\geq{0}\cr
+x_t\geq{0}\cr
+\end{align}
 $$
 
 into
 
 $$
-\begin{align*}
-\max{\sum_{j=1}^{n}{P_jx_j}}\\
-s.t.\quad \sum_{j=1}^{n}A_{ij}x_j\leq{R_i}\quad \forall{i}=1,....m\\
-x_j\geq{0}\quad \forall{j}=1,...,n\\
-\end{align*}
+\begin{align}
+\max{\sum_{j=1}^{n}{P_jx_j}}\cr
+s.t.\quad \sum_{j=1}^{n}A_{ij}x_j\leq{R_i}\quad \forall{i}=1,....m\cr
+x_j\geq{0}\quad \forall{j}=1,...,n\cr
+\end{align}
 $$
 
 which
 
-$$P_j=\text{units of product j to produce } \forall{j}=1,...n\\
-R_i=\text{resource supply limit}\\
+$$
+\begin{align}
+P_j=\text{units of product j to produce } \forall{j}=1,...n\cr
+R_i=\text{resource supply limit}\cr
 A_{ij}=\text{resource i required for producing one unit of product j}
+\end{align}
 $$
 
 or taking it even further,
 
 $$
-\begin{align*}
-\max{\sum_{j=1}^{n}{P_jx_j}}\\
-s.t.\quad \sum_{j\in{J}}A_{ij}x_j\leq{R_i}\quad \forall{i}\in{I}\\
-x_j\geq{0}\quad \forall{j}\in{J}\\
-\end{align*}
+\begin{align}
+\max{\sum_{j=1}^{n}{P_jx_j}}\cr
+s.t.\quad \sum_{j\in{J}}A_{ij}x_j\leq{R_i}\quad \forall{i}\in{I}\cr
+x_j\geq{0}\quad \forall{j}\in{J}\cr
+\end{align}
 $$
 
 by defining index sets $J=\{1,2,...,n\}$ and $I=\{1,2,...,m\}$
@@ -395,13 +408,13 @@ opt = linprog(
 consider the following LP
 
 $$
-\begin{align*}
-\max{2x_1-x_2}\\
-s.t. \quad 8x_1-4x_2\leq{16}\\
-3x_1-4x_2\leq{16}\\
-x_1\geq{0}\\
+\begin{align}
+\max{2x_1-x_2}\cr
+s.t. \quad 8x_1-4x_2\leq{16}\cr
+3x_1-4x_2\leq{16}\cr
+x_1\geq{0}\cr
 x_2\leq{0}
-\end{align*}
+\end{align}
 $$
 
 using `scipy.optimize.linprog` allows user to find the first optimal solution,
@@ -431,14 +444,14 @@ for item 3 imagine a 1D scenario, a single binding constraint is sufficient.
 solve
 
 $$
-\begin{align*}
-\max 3x_1+5x_2\\
-s.t. \quad x_1+x_2\leq{16}\\
-x_1+4x_2\leq{20}\\
-2x_1+x_2\geq{6}\\
-x_1\geq{0}\\
+\begin{align}
+\max 3x_1+5x_2\cr
+s.t. \quad x_1+x_2\leq{16}\cr
+x_1+4x_2\leq{20}\cr
+2x_1+x_2\geq{6}\cr
+x_1\geq{0}\cr
 x_2\leq{0}
-\end{align*}
+\end{align}
 $$
 
 ans: $(44/3, 4/3)$
@@ -451,12 +464,12 @@ table is 1.1 and chair is 0.7. 10 hour work per day. price is $100 for table
 and $70 for chair.
 
 $$
-\begin{align*}
-\max Ax_1+18x_2\\
-s.t. \quad 7x_1+4x_2\leq{50}\\
-Bx_1+Cx_2\leq{10}\\
+\begin{align}
+\max Ax_1+18x_2\cr
+s.t. \quad 7x_1+4x_2\leq{50}\cr
+Bx_1+Cx_2\leq{10}\cr
 x_i\geq{0} \quad \forall{i}=1, 2
-\end{align*}
+\end{align}
 $$
 
 ans: $A=9,B=1/1.1,C=1/0.7$
