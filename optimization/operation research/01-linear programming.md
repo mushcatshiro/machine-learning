@@ -39,28 +39,29 @@ $f:\mathbb{R}^{n}\Rightarrow{\mathbb{R}}$ and $g_i:\mathbb{R}^{n}\Rightarrow\mat
 
 ### tranformation
 
-- $\max{f(x)}\Leftrightarrow{\min{-f(x)}}$
-- $g_i(x)\geq{b_i}\Leftrightarrow{-g_i(x)}\leq{-b_i}$
-- $g_i(x)=b_i\Leftrightarrow{g_i(x)\leq{b_i}\quad\And\quad g_i(x)\geq{b_i}\text{, i.e. }-g_i(x)\leq{-b_i}}$
+- $\max{f(x)}\hArr\min{-f(x)}$
+- $g_i(x)\geq{b_i}\hArr{-g_i(x)}\leq{-b_i}$
+- $g_i(x)=b_i\hArr{(g_i(x)\leq{b_i},g_i(x)\geq{b_i})}\hArr{(g_i(x)\leq{b_i},-g_i(x)\leq{-b_i})}$
 
 SNOTE:
+
 $$
-\begin{align}
-\max(x_1-x_2)\cr
-s.t.\quad (-2x_1+x_2)\geq{-3}\cr
+\begin{align*}
+\max(x_1-x_2)\\
+s.t.\quad (-2x_1+x_2)\geq{-3}\\
 x_1+4x_2=5
-\end{align}
+\end{align*}
 $$
 
 is equivalent to
 
 $$
-\begin{align}
-\min(-x_1+x_2)\cr
-s.t.\quad (2x_1-x_2)\leq{3}\cr
-x_1+4x_2\leq{5}\cr
+\begin{align*}
+\min(-x_1+x_2)\\
+s.t.\quad (2x_1-x_2)\leq{3}\\
+x_1+4x_2\leq{5}\\
 -x_1-4x_2\leq{-5}
-\end{align}
+\end{align*}
 $$
 
 thus we just need to learn to solve minimize problem.
